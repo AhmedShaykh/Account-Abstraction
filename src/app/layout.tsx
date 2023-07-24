@@ -1,14 +1,9 @@
-import Navbar from "@/components/layout/navbar";
-import "./globals.css";
 import React from "react";
 import { Inter } from "next/font/google";
-// import AuthContextProvider from "@/context";
-import { WagmiClient, chains } from "@/context/wagmiClient";
-import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import Navbar from "@/components/layout/navbar";
 import SecLayout from "./secLayout";
 import AuthContextProvider from "@/context";
-
-
+import "./globals.css";
 
 const interFonts = Inter({
     subsets: ["latin"],
@@ -27,13 +22,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body className={interFonts.className}>
                 <AuthContextProvider>
                     <SecLayout>
-                    <div className="mb-24">
-                        <Navbar />
-                    </div>
-                    <div>{children}</div>
+                        <div className="mb-24">
+                            <Navbar />
+                        </div>
+                        <div>{children}</div>
                     </SecLayout>
                 </AuthContextProvider>
             </body>
         </html>
     );
-}
+};

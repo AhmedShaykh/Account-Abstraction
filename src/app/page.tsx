@@ -1,12 +1,5 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
-import Hero from '@/components/home/hero'
-import React from 'react'
-
-import { cookies } from 'next/headers'
-
-const inter = Inter({ subsets: ['latin'] })
+import React from 'react';
+import Hero from '@/components/home/hero';
 
 export default function Home() {
 
@@ -15,4 +8,4 @@ export default function Home() {
       <Hero />
     </main>
   )
-}
+};

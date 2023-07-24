@@ -15,57 +15,57 @@ import { AuthContext } from "@/context";
 export default function SecLayout({ children }: { children: React.ReactNode }) {
 
 
-    const getSigner =  useSigner()
-    const { state, dispatch, setLoading,signout,signin } = useContext(AuthContext);
-
-    
+    const getSigner = useSigner()
+    const { state, dispatch, setLoading, signout, signin } = useContext(AuthContext);
 
 
-    console.log('state',state)
+
+
+    console.log('state', state)
 
     useEffect(() => {
         const user = getUserClient();
-        console.log('user',user)
+        console.log('user', user)
         const isWagmiConn = new isWagmiConnected().get()
 
-        if (isWagmiConn && user?.publicAddress && getSigner.data){
+        if (isWagmiConn && user?.publicAddress && getSigner.data) {
             // loggedIn
             setLoading(false)
         }
-        else if (!isWagmiConn){
+        else if (!isWagmiConn) {
             // setLoading(false)
             signout()
         }
 
-    
-        else if (isWagmiConn && user?.publicAddress && !getSigner.data){
+
+        else if (isWagmiConn && user?.publicAddress && !getSigner.data) {
             // loading signer
             setLoading(true)
         }
 
-    
-    }, [getSigner.data, state.address,state.loading,state.signer,state.isError]);
+
+    }, [getSigner.data, state.address, state.loading, state.signer, state.isError]);
 
 
 
-    useEffect(()=>{
+    useEffect(() => {
 
-        if (getSigner.data){
+        if (getSigner.data) {
             signin(getSigner.data)
         }
 
 
-    },[getSigner.data])
+    }, [getSigner.data])
 
 
 
     return (
 
 
-            <div>
-                {children}
-         
-            </div>
-    
+        <div>
+            {children}
+
+        </div>
+
     );
 }
